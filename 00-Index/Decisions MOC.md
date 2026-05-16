@@ -13,6 +13,8 @@ Cronologic, newest first. Fiecare decizie cu rationale clar. Citește înainte d
 
 ## 2026-05
 
+- [[2026-05-16 Pre-mortem Trading Bots]] — 16 risks identified, 4 Launch-Blocking, key insight: bandwidth split + tax exposure + single-dev = Elephants-as-Tigers
+- [[2026-05-16 Pre-mortem skill cherry-pick]] — installed borghei-pre-mortem skill, NOT full repo
 - [[2026-05-16 Setup Obsidian vault]] — replaced flat MEMORY.md with structured vault for knowledge graph
 - [[2026-05-15 IBKR 2FA reconnect protocol]] — must tap notification, NOT login in app
 - [[2026-05-10 Lane A funding-contrarian killed]] — Sharpe -1.14 over 18mo backtest
@@ -34,7 +36,11 @@ Cronologic, newest first. Fiecare decizie cu rationale clar. Citește înainte d
 - [[2026-05-10 Lane A funding-contrarian killed]]
 - [[2026-05-08 Crypto-carry abandoned]]
 
+### Risk analysis
+- [[2026-05-16 Pre-mortem Trading Bots]] — 16 risks, 4 Launch-Blocking Tigers
+
 ### Infrastructure / setup
+- [[2026-05-16 Pre-mortem skill cherry-pick]]
 - [[2026-05-16 Setup Obsidian vault]]
 - [[2026-05-15 IBKR 2FA reconnect protocol]]
 

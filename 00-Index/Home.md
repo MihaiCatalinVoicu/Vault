@@ -40,6 +40,8 @@ updated: 2026-05-16
 
 ## Recent decisions (newest first)
 
+- [[2026-05-16 Pre-mortem Trading Bots]] — **16 risks, 4 Launch-Blocking**: IBKR 2FA SPOF, stocks→ibkr coupling, state.json corruption, bandwidth split
+- [[2026-05-16 Pre-mortem skill cherry-pick]] — installed borghei-pre-mortem (audited safe)
 - [[2026-05-16 Setup Obsidian vault]] — initialized this vault
 - [[2026-05-15 IBKR 2FA reconnect protocol]] — must tap notification, NOT login in-app
 - [[2026-05-10 Lane A funding-contrarian killed]] — Sharpe -1.14 over 18mo backtest
