@@ -3,8 +3,9 @@
 .obsidian/workspace-mobile.json
 .obsidian/workspaces.json
 
-# Obsidian cache
+# Obsidian cache + per-machine graph view state
 .obsidian/cache
+.obsidian/graph.json
 .obsidian/community-plugins.json.bak
 .obsidian/graph.json.bak
 
