@@ -14,11 +14,29 @@ updated: 2026-05-16
 
 ## Active projects (status azi)
 
+### 🔴 LIVE — real money
+
 | Proiect | Status | Pointer |
 |---|---|---|
-| [[Reservation-System]] | 🟢 ACTIVE — client_app market readiness in execution | Sprint 5/8A/9/10 pending pe laptop personal |
-| [[ibkr_bot]] | 🟢 LIVE — running tick=5553+, IBKR gateway issue 2FA | Vezi ultimul status snapshot |
-| [[crypto-bot]] | 🟡 DORMANT — toate strategiile killed, necesită R&D | Lane A killed 2026-05-10, pullback killed earlier, breakout sub-sample |
+| [[ibkr_bot]] | 🔴 LIVE — EC_V1 strategy, $385/slot tier | Server `207.154.248.232`. Diagnostic-first protocol obligatoriu. |
+
+### 🟢 Active — research / paper / tooling
+
+| Proiect | Status | Pointer |
+|---|---|---|
+| [[Reservation-System]] | client_app market readiness in execution | Sprint 5/8A/9/10 pending pe laptop personal |
+| [[stocks-bot]] | PAPER → genereaza semnale EC_V1 pentru ibkr_bot | Active lane: `stocks_event_v2_lane` |
+| [[alpha-lab]] | R&D research lab, 3 fronts active | NU live order routing |
+| [[research-orchestrator]] | TOOLING — A1 digest deployed 2026-05-08 | Multi-venue digest pentru ibkr_bot context |
+
+### 🟡 TBD / 🛑 Dormant / ⚪ Inactive
+
+| Proiect | Status |
+|---|---|
+| [[Pollymarket]] | 🟡 TBD — verifică status când atingi |
+| [[crypto-bot]] | 🛑 DORMANT — toate strategiile killed. Vezi [[Strategy resurrection gate]] |
+| [[Automation_MVP]] | ⚪ Telegram poller mort din martie 2026 |
+| [[strategy-os-landing]] | ⚪ Next.js landing, are propriul CLAUDE.md |
 
 ## Recent decisions (newest first)
 
@@ -33,6 +51,8 @@ updated: 2026-05-16
 - [[Stefanini laptop monitoring]] — what's logged + what's safe to do
 - [[Claude session boundary]] — rules of engagement for Claude in this vault
 - [[Git workflow]] — vault sync cross-laptop
+- [[Strategy resurrection gate]] — NU re-activa strategies killed fără gate strict
+- [[Telegram bots map]] — bot_id per serviciu
 
 ## How to use this vault
 

@@ -9,45 +9,89 @@ updated: 2026-05-16
 
 # Projects MOC
 
-Map of Content pentru toate proiectele. Click pe oricare → pagina dedicată.
+Map of Content pentru toate proiectele active + arhivate. Status preluat din canonical CLAUDE.md per repo.
 
-## 🟢 Active
+## 🔴 LIVE (real money)
 
-### [[Reservation-System]]
-> SaaS HoReCa multi-tenant. Restaurant + Hotel + Spa + Tourist Hub.
-> Stack: Spring Boot 3.5.5 / Java 21 / Postgres / React Vite / Flutter mobile.
-> **Curent:** Client app market readiness (10 sprinturi spre Play Internal Testing).
+### [[ibkr_bot]] — `C:\Personal\Trading Bots\ibkr_bot\`
+- Equity/futures via IBKR Gateway, server-side automated
+- Strategy: **EC_V1**, $385/slot tier
+- Server: `207.154.248.232:/opt/ibkr_bot/`
+- Telegram bot 8639
+- **Risk: HIGH** — diagnostic-first protocol obligatoriu înainte de orice "fix"
 
-### [[ibkr_bot]]
-> Live trading bot pe IBKR Gateway (server-side, automated).
-> **Curent:** running tick=5553+, $385/slot tier, NetLiq $966.10.
-> **Issue azi:** Gateway 2FA reconnect — see [[2026-05-15 IBKR 2FA reconnect protocol]].
+## 🟢 ACTIVE — research / paper / tooling (SIM)
 
-## 🟡 Dormant
+### [[Reservation-System]] — `C:\Personal\Reservation-Systems\Reservation-System\`
+- SaaS HoReCa multi-tenant (restaurant + hotel + spa + tourist)
+- Stack: Spring Boot + React + Flutter
+- **Curent:** client_app market readiness — Sprint 5/8A/9/10 pending pe laptop personal
 
-### [[crypto-bot]]
-> Multi-strategy crypto trading bot.
-> **Status:** toate strategiile killed (pullback Sharpe -4.31, breakout sub-sample, Lane A -1.14). Service alive dar zero semnale.
-> **Next:** R&D strategie nouă, fără urgență.
+### [[stocks-bot]] — `C:\Personal\Trading Bots\stocks-bot\`
+- SEC Form 4 pipeline → events → enrich → score → ideas → shadow sim
+- **PAPER only** — generează semnale EC_V1 consumate de [[ibkr_bot]]
+- Active lane: `stocks_event_v2_lane`
 
-## 🔴 Killed / Abandoned
+### [[alpha-lab]] — `C:\Personal\Trading Bots\alpha-lab\`
+- Research laboratory separate de live runtimes
+- 3 fronts: ETF/index, SEC events, Crypto carry/basis (research-only)
+- Promotion: alpha-lab → stocks-bot paper → micro-live → live
 
-### crypto-carry (in [[crypto-bot]])
-> Timer disabled 2026-05-08. Structural dead per BIS+BitMEX 2025 research. NU re-activa. Detalii: [[2026-05-08 Crypto-carry abandoned]].
+### [[research-orchestrator]] — `C:\Personal\Trading Bots\research-orchestrator\`
+- Idea review + debate + voting + outcome tracking
+- **A1 digest** producer (deployed 2026-05-08)
 
-### Lane A funding-contrarian (in [[crypto-bot]])
-> Killed 2026-05-10. Detalii: [[2026-05-10 Lane A funding-contrarian killed]].
+## 🟡 TBD status
 
-## 🌱 Side / experiments
+### [[Pollymarket]] — `C:\Personal\Trading Bots\Pollymarket\`
+- `polymarket_mm_v1` — passive MM pe binary objective markets
+- Per CLAUDE.md: "Verifică status când atingi"
+- `parity_v1` lane în [[stocks-bot]] = frozen (resource isolation issue)
+
+## 🛑 DORMANT (toate strategiile killed)
+
+### [[crypto-bot]] — `C:\Personal\Trading Bots\Crypto_bot\`
+- Multi-strategy crypto trading + ML pipeline
+- Toate strategiile killed: Lane A, crypto-carry, pullback, breakout
+- Service alive, zero semnale
+- Telegram bot 8736
+- **Strategy resurrection gate** aplicabil — vezi [[Strategy resurrection gate]]
+
+## ⚪ INACTIVE / Marketing
+
+### [[Automation_MVP]] — `C:\Personal\Trading Bots\Automation_MVP\`
+- Local orchestrator FastAPI + SQLite + Telegram
+- Telegram poller mort din martie 2026
+- Status: probably abandoned, needs explicit decision
+
+### [[strategy-os-landing]] — `C:\Personal\Trading Bots\strategy-os-landing\`
+- Next.js landing pentru produsul "strategy-os"
+- N/A pentru trading pipeline
+- Are propriul CLAUDE.md — nu intra peste el
+
+## 🌱 Side / experiments (TBD)
 
 | Folder pe disk | Status |
 |---|---|
 | `C:\Personal\Dating App` | unclear — TBD revisit |
 | `C:\Personal\mini-detect-api` | unclear — TBD revisit |
 | `C:\Personal\tools` | utility belt — TBD inventory |
-| `C:\Personal\Trading Bots` | umbrella pentru ibkr_bot + crypto-bot codebases |
 | `C:\Personal\claude-resources` | Claude Code skills sandbox (cloned repos pentru install) |
+
+## Dependency graph (live money pipeline)
+
+```
+[[alpha-lab]] (R&D)
+    ↓ manual promotion
+[[stocks-bot]] (paper, generates EC_V1 signals)
+    ↓ signals consumed
+[[ibkr_bot]] (LIVE — real money $$$ — diagnostic-first)
+    ↑ ↓
+[[research-orchestrator]] (A1 digest, cross-venue)
+```
+
+**Critical coupling:** schimbări în [[stocks-bot]] `risk_gate` / `ranker` / `lane_registry` pot afecta live trades pe [[ibkr_bot]]. Review cross-context obligatoriu.
 
 ---
 
-**Cross-link:** [[Home]] · [[Decisions MOC]]
+**Cross-link:** [[Home]] · [[Decisions MOC]] · [[Strategy resurrection gate]]
