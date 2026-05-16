@@ -13,6 +13,7 @@ Cronologic, newest first. Fiecare decizie cu rationale clar. Citește înainte d
 
 ## 2026-05
 
+- [[2026-05-16 Pre-mortem Reservation-System]] — **18+4 risks**, 7 Launch-Blocking, key insight: toate eforturile tehnice presupun un paying pilot care nu există încă
 - [[2026-05-16 Pre-mortem Trading Bots]] — 16 risks identified, 4 Launch-Blocking, key insight: bandwidth split + tax exposure + single-dev = Elephants-as-Tigers
 - [[2026-05-16 Pre-mortem skill cherry-pick]] — installed borghei-pre-mortem skill, NOT full repo
 - [[2026-05-16 Setup Obsidian vault]] — replaced flat MEMORY.md with structured vault for knowledge graph
@@ -37,7 +38,8 @@ Cronologic, newest first. Fiecare decizie cu rationale clar. Citește înainte d
 - [[2026-05-08 Crypto-carry abandoned]]
 
 ### Risk analysis
-- [[2026-05-16 Pre-mortem Trading Bots]] — 16 risks, 4 Launch-Blocking Tigers
+- [[2026-05-16 Pre-mortem Reservation-System]] — 18+4 risks, 7 Launch-Blocking Tigers, **existential risk class**
+- [[2026-05-16 Pre-mortem Trading Bots]] — 16 risks, 4 Launch-Blocking Tigers, **operational risk class**
 
 ### Infrastructure / setup
 - [[2026-05-16 Pre-mortem skill cherry-pick]]
