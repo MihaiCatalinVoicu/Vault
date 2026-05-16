@@ -1,0 +1,29 @@
+# Obsidian workspace state (per-machine cursor, layout) — don't sync
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspaces.json
+
+# Obsidian cache
+.obsidian/cache
+.obsidian/community-plugins.json.bak
+.obsidian/graph.json.bak
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Trash / temp
+.trash/
+*.tmp
+
+# Sensitive (don't accidentally commit secrets)
+**/private/
+**/*.secret.md
+**/credentials.md
+
+# Drafts marked private with .draft.md suffix
+*.draft.md
