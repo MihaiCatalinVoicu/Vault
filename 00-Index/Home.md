@@ -40,6 +40,7 @@ updated: 2026-05-16
 
 ## Recent decisions (newest first)
 
+- [[2026-05-16 Reservation-System pre-pilot readiness]] — Accounting Ops ✅ GATA, Fast Ops ⚠️ restaurant-only, External Reservations 🔄 foundation+3PR MVP. Decision: pilot restaurant-only + mobile PAUSE + demo video first.
 - [[2026-05-16 Pre-mortem Reservation-System]] — **18+4 risks, 7 Launch-Blocking**, key: TOATE eforturile tehnice presupun paying pilot care nu există încă
 - [[2026-05-16 Pre-mortem Trading Bots]] — **16 risks, 4 Launch-Blocking**: IBKR 2FA SPOF, stocks→ibkr coupling, state.json corruption, bandwidth split
 - [[2026-05-16 Pre-mortem skill cherry-pick]] — installed borghei-pre-mortem (audited safe)
@@ -56,6 +57,7 @@ updated: 2026-05-16
 - [[Git workflow]] — vault sync cross-laptop
 - [[Strategy resurrection gate]] — NU re-activa strategies killed fără gate strict
 - [[Telegram bots map]] — bot_id per serviciu
+- [[Demo video strategy]] — playbook complete pentru demo VenueHub (Playwright + OBS + ElevenLabs + outreach messages)
 
 ## How to use this vault
 

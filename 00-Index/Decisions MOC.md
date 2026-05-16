@@ -13,6 +13,7 @@ Cronologic, newest first. Fiecare decizie cu rationale clar. Citește înainte d
 
 ## 2026-05
 
+- [[2026-05-16 Reservation-System pre-pilot readiness]] — gap analysis cele 3 zone (accounting ✅, fast-ops restaurant-only, external foundation+3PR), 4 forced decisions
 - [[2026-05-16 Pre-mortem Reservation-System]] — **18+4 risks**, 7 Launch-Blocking, key insight: toate eforturile tehnice presupun un paying pilot care nu există încă
 - [[2026-05-16 Pre-mortem Trading Bots]] — 16 risks identified, 4 Launch-Blocking, key insight: bandwidth split + tax exposure + single-dev = Elephants-as-Tigers
 - [[2026-05-16 Pre-mortem skill cherry-pick]] — installed borghei-pre-mortem skill, NOT full repo
@@ -47,7 +48,8 @@ Cronologic, newest first. Fiecare decizie cu rationale clar. Citește înainte d
 - [[2026-05-15 IBKR 2FA reconnect protocol]]
 
 ### Product / market
-- [[2026-05-06 Client app market readiness sprint plan]]
+- [[2026-05-16 Reservation-System pre-pilot readiness]] — gap analysis cele 3 zone + 4 forced decisions
+- [[2026-05-06 Client app market readiness sprint plan]] — Sprint 5-10 PAUSED per D3 din pre-pilot readiness
 
 ---
 
