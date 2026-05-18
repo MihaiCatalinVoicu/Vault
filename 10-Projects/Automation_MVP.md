@@ -62,6 +62,8 @@ Vezi [[2026-05-18 Alert Intelligence deployed]].
 
 2026-05-18 update:
 - added stocks `Volume Confirmation` shadow layer from volume research PDF;
+- deployed it to Strategy OS server;
+- wired `stocks-bot` + `ibkr_bot` runtime persistence for `volume_z_66d`, `event_day_return_pct`, `vwap_distance_pct`, `turnover_percentile`;
 - no live gate yet; it records VWAP/abnormal-volume/turnover context for later outcome analysis.
 
 Vezi [[2026-05-18 Volume Confirmation shadow layer]].
