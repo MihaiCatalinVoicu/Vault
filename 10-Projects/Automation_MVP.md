@@ -79,6 +79,13 @@ Vezi [[2026-05-18 Volume Confirmation shadow layer]].
 
 Vezi [[2026-05-18 Alert Intelligence deployed]].
 
+2026-05-18 Daily Signal Digest truthfulness fix:
+- `stocks-bot` daily digest no longer presents paper/shadow portfolio metrics as live positions/PnL;
+- AI review is disabled by default in that script;
+- dry-run archive no longer overwrites sent digest archive.
+
+Vezi [[2026-05-18 Daily Signal Digest truthfulness fix]].
+
 ## Layout
 
 | Dir | Rol |
