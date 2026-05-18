@@ -50,21 +50,40 @@ Strategy OS DB devine sursa de adevăr pentru istoricul alertelor. Telegram răm
 ## Git commits
 
 - `Automation_MVP`: `d902de5` — `Add alert intelligence pipeline`
+- `Automation_MVP`: `c0533dc` — `Log position health AI usage`
 - `ibkr_bot`: `d543f06` — `Mirror live alerts to Strategy OS`
 - `Crypto_bot`: `c3b759b` — `Mirror crypto alerts to Strategy OS`
 
 ## Observații
 
-- `crypto-bot` Telegram token este valid pentru `CryptoBotSimBot`, dar `getChat(1194534321)` returnează `Bad Request: chat not found`. Cel mai probabil userul nu a inițiat conversația cu acel bot specific sau botul a fost blocat. Fix operațional: deschide `@CryptoBotSimBot`, trimite `/start`, apoi verifică `getChat`.
-- `ai_usage_events` este gol pentru AI Console; poziția health folosește provider real, dar nu loghează încă usage/cost. Trebuie adăugat usage logging și cost cap înainte de weekly consensus real.
-- `/health` arată `billing_configured=false`; înainte de promovare publică trebuie Stripe live + legal/commercial hardening.
+- `crypto-bot` Telegram a fost reparat operațional:
+  - userul a pornit chatul cu `@CryptoBotSimBot`;
+  - `getChat(1194534321)` trece;
+  - `sendMessage` trece;
+  - `telegram.enabled=true` și `reporting.daily_alerts_enabled=true` în `/opt/crypto-bot/current/config.yaml`;
+  - `crypto-bot.service` restartat și activ.
+- `ai_usage_events` era gol, iar Position Health folosea provider real fără usage logging. Fix implementat/deployat:
+  - `ai_provider.py` returnează usage pentru Position Health;
+  - `position_health.py` scrie review usage în `ai_usage_events`;
+  - test: `tests/test_position_health_telegram_ops.py::test_position_health_review_logs_ai_usage`.
+- Anthropic:
+  - cheia de pe server este standard API key, nu Admin key;
+  - Anthropic Admin Usage Report API nu poate fi folosit cu cheia curentă;
+  - Strategy OS AI model a fost schimbat temporar la `claude-haiku-4-5-20251001` ca măsură de cost control;
+  - weekly alert consensus rămâne `mock`.
+- Stripe:
+  - serverul are `STRIPE_SECRET_KEY` test și `STRIPE_WEBHOOK_SECRET`;
+  - lipsea `STRIPE_PRICE_ID`;
+  - setat `STRIPE_PRICE_ID=price_1TMPSlQ5Ho1FJ6k8lhDtw8AV` (`Founding Pilot`, 149 EUR/month, test mode);
+  - `/health` arată acum `billing_configured=true`;
+  - rămâne necesar live mode înainte de promovare publică.
 
 ## Next
 
-1. Fix Telegram crypto chat binding.
-2. Add AI usage/cost logging pentru position health + consensus.
-3. Decide provider/cost policy: Anthropic real doar cu buget și rate limits; mock/deterministic pentru daily.
-4. Stripe live readiness: products/prices, checkout, portal, webhook, legal pages, owner email non-work.
+1. Stripe live readiness: live key, live prices, portal, webhook, legal pages, cancellation/refund/risk disclosure.
+2. Anthropic cost attribution: export din Dashboard sau Admin key pentru usage report; apoi buget zilnic și rate limits.
+3. Weekly consensus real: activează doar după cost caps + usage logging complet; daily rămâne deterministic.
+4. Crypto Telegram: monitorizează următorul scan real; dacă nu apare mesaj, verifică `reporting.daily_alerts_enabled` și logs.
 
 ## Cross-refs
 
