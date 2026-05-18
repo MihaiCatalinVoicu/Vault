@@ -14,7 +14,7 @@ tags:
   - product/saas
   - product/horeca
 created: 2026-04
-updated: 2026-05-16
+updated: 2026-05-18
 ---
 
 # Reservation-System
@@ -54,6 +54,18 @@ Operat de **NOVENTRA SYSTEMS S.R.L.** (CUI 54594735, J2026028611002). Domain: `v
 iOS native track separat la `ios/` (parking lot).
 
 ## Current execution
+
+### Current state snapshot (2026-05-18)
+
+Latest canonical vault snapshot: [[Reservation-System - State 2026-05-18]]
+
+Short version:
+
+- Accounting Ops are flow local/demo pentru Supplier Inbox, OCR local, Extraction Assist, matching/posting review-first, exporturi WIZCOUNT/SAGA/WinMentor, e-Factura preview/mock si SAF-T preview/local validator. Nu face live ANAF/SPV submission, nu face official SAF-T filing si nu posteaza contabil automat.
+- Paid pilot billing este operational comercial prin flux extern/contabil/SPV, iar VenueHub urmareste intern customer profile, pilot order, invoice draft, line items, evidence si paid/unpaid.
+- ANAF/e-Factura are lant tehnic controlat pana la readiness/ops: OAuth foundation, XML preview, operator-approved upload abstraction, manual status/evidence abstraction, readiness gates, manual retry si incident/release docs.
+- Real ANAF TEST proof este inca **NO-GO**: lipsesc ANAF app registration/client credentials/SPV authority/private secrets/admin auth.
+- Main repo head la snapshot: `779113f5 fix(billing): wire ANAF e-Factura clients for Spring`.
 
 ### Client app market readiness (started 2026-05-06)
 
