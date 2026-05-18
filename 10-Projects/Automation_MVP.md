@@ -60,6 +60,12 @@ Nou:
 
 Vezi [[2026-05-18 Alert Intelligence deployed]].
 
+2026-05-18 update:
+- added stocks `Volume Confirmation` shadow layer from volume research PDF;
+- no live gate yet; it records VWAP/abnormal-volume/turnover context for later outcome analysis.
+
+Vezi [[2026-05-18 Volume Confirmation shadow layer]].
+
 ## Layout
 
 | Dir | Rol |
