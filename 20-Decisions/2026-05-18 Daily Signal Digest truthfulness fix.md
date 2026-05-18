@@ -81,6 +81,46 @@ SEC_USER_AGENT='InsiderEdge mihai.catalin_voicu@yahoo.com' pytest \
 
 ## Remaining
 
-- Implement verified live portfolio source for digest if we want live PnL in Telegram.
-- Source should be IBKR live state / `ibkr_bot` state, not paper shadow runtime.
-- Until then, digest must not print live-looking portfolio metrics.
+- Done in follow-up sprint: verified live portfolio source implemented.
+- `ibkr_bot` now exports `/opt/ibkr_bot/data/live_portfolio_snapshot.json`.
+- Snapshot schema: `ibkr_live_portfolio_snapshot_v1`, `source=ibkr_live`, `verified=true` only when:
+  - IBKR is connected;
+  - account summary read succeeds;
+  - portfolio items read succeeds;
+  - bot is not dry-run.
+- `stocks-bot` daily digest reads that snapshot only if fresh; otherwise falls back to omitting portfolio metrics.
+
+Server dry-run after live source wiring:
+
+```text
+━━ PORTFOLIO ━━
+
+Source: IBKR live verified
+Net liquidation: $957.96 USD
+Cash: $799.15 USD
+Open positions: 1
+Unrealized PnL: $+3.82 | Realized PnL: $+0.00
+Positions: GEHC 3 PnL $+3.82
+```
+
+Backups:
+- `/root/backups/ibkr-bot-live-snapshot-20260518T153943Z`
+- `/root/backups/stocks-bot-live-digest-20260518T153943Z`
+- `/root/backups/stocks-bot-live-digest-schema-20260518T154305Z`
+
+Tests after live source wiring:
+
+```text
+ibkr_bot:
+  tests/test_live_portfolio_snapshot.py
+  tests/test_main_runner_config.py
+  tests/test_close_detection.py
+  tests/test_reconciliation.py
+  34 passed
+
+stocks-bot:
+  tests/test_daily_signal_digest.py
+  tests/test_effective_policy.py
+  tests/test_paper_eval_accounting.py
+  22 passed
+```

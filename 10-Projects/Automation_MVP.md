@@ -83,6 +83,7 @@ Vezi [[2026-05-18 Alert Intelligence deployed]].
 - `stocks-bot` daily digest no longer presents paper/shadow portfolio metrics as live positions/PnL;
 - AI review is disabled by default in that script;
 - dry-run archive no longer overwrites sent digest archive.
+- follow-up deployed: `ibkr_bot` exports verified live IBKR snapshot and `stocks-bot` digest reads it when fresh.
 
 Vezi [[2026-05-18 Daily Signal Digest truthfulness fix]].
 
