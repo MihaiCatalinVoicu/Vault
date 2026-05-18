@@ -68,6 +68,17 @@ Vezi [[2026-05-18 Alert Intelligence deployed]].
 
 Vezi [[2026-05-18 Volume Confirmation shadow layer]].
 
+2026-05-18 Anthropic cost-control update:
+- Strategy OS provider smoke test passed with `claude-haiku-4-5-20251001`;
+- server-side AI budget guardrails deployed:
+  - daily cap `$0.75`;
+  - monthly cap `$10`;
+  - max output tokens `350`;
+  - hard max output tokens `800`;
+- `/health` now exposes non-secret `ai.budget` status.
+
+Vezi [[2026-05-18 Alert Intelligence deployed]].
+
 ## Layout
 
 | Dir | Rol |

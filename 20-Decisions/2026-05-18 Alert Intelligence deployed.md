@@ -70,7 +70,19 @@ Strategy OS DB devine sursa de adevăr pentru istoricul alertelor. Telegram răm
   - cheia de pe server este standard API key, nu Admin key;
   - Anthropic Admin Usage Report API nu poate fi folosit cu cheia curentă;
   - Strategy OS AI model a fost schimbat temporar la `claude-haiku-4-5-20251001` ca măsură de cost control;
-  - weekly alert consensus rămâne `mock`.
+  - weekly alert consensus rămâne `mock`;
+  - 2026-05-18 update: Strategy OS are acum budget guardrails server-side:
+    - `STRATEGY_OS_AI_MAX_TOKENS=350`;
+    - `STRATEGY_OS_AI_HARD_MAX_TOKENS=800`;
+    - `STRATEGY_OS_AI_TIMEOUT_SECONDS=20`;
+    - `STRATEGY_OS_AI_INPUT_COST_PER_MILLION_TOKENS=1`;
+    - `STRATEGY_OS_AI_OUTPUT_COST_PER_MILLION_TOKENS=5`;
+    - `STRATEGY_OS_AI_DAILY_COST_LIMIT_USD=0.75`;
+    - `STRATEGY_OS_AI_MONTHLY_COST_LIMIT_USD=10`;
+    - `/health` expune `ai.budget` non-secret;
+    - provider call-ul este blocat fail-closed dacă bugetul este atins sau cost tracking-ul nu poate fi verificat;
+    - smoke real Anthropic: `claude-haiku-4-5-20251001`, 237 input tokens, 96 output tokens, cost estimat `$0.000717`, status `ok`.
+  - Limitare: guardrail-ul acoperă doar call-urile făcute prin Strategy OS `ai_provider`, nu alte scripturi sau chei Anthropic.
 - Stripe:
   - serverul are `STRIPE_SECRET_KEY` test și `STRIPE_WEBHOOK_SECRET`;
   - lipsea `STRIPE_PRICE_ID`;
@@ -81,8 +93,8 @@ Strategy OS DB devine sursa de adevăr pentru istoricul alertelor. Telegram răm
 ## Next
 
 1. Stripe live readiness: live key, live prices, portal, webhook, legal pages, cancellation/refund/risk disclosure.
-2. Anthropic cost attribution: export din Dashboard sau Admin key pentru usage report; apoi buget zilnic și rate limits.
-3. Weekly consensus real: activează doar după cost caps + usage logging complet; daily rămâne deterministic.
+2. Anthropic external cost attribution: export din Dashboard sau Admin key pentru usage report, ca reconciliere cu factura Anthropic. Strategy OS are bugete proprii, dar nu vede consumul extern.
+3. Weekly consensus real: activează doar după câteva zile de usage sub cap; daily rămâne deterministic.
 4. Crypto Telegram: monitorizează următorul scan real; dacă nu apare mesaj, verifică `reporting.daily_alerts_enabled` și logs.
 
 ## Cross-refs
