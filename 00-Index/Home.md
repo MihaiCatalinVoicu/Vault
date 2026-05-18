@@ -4,7 +4,7 @@ type: index
 tags:
   - moc
   - home
-updated: 2026-05-16
+updated: 2026-05-18
 ---
 
 # Home — VenueHub Vault
@@ -35,11 +35,12 @@ updated: 2026-05-16
 |---|---|
 | [[Pollymarket]] | 🟡 TBD — verifică status când atingi |
 | [[crypto-bot]] | 🛑 DORMANT — toate strategiile killed. Vezi [[Strategy resurrection gate]] |
-| [[Automation_MVP]] | ⚪ Telegram poller mort din martie 2026 |
+| [[Automation_MVP]] | 🟢 Strategy OS active — Alert Intelligence deployed 2026-05-18 |
 | [[strategy-os-landing]] | ⚪ Next.js landing, are propriul CLAUDE.md |
 
 ## Recent decisions (newest first)
 
+- [[2026-05-18 Alert Intelligence deployed]] — Strategy OS DB devine istoric central pentru alerte; daily learning + weekly consensus timers active.
 - [[2026-05-16 Reservation-System pre-pilot readiness]] — Accounting Ops ✅ GATA, Fast Ops ⚠️ restaurant-only, External Reservations 🔄 foundation+3PR MVP. Decision: pilot restaurant-only + mobile PAUSE + demo video first.
 - [[2026-05-16 Pre-mortem Reservation-System]] — **18+4 risks, 7 Launch-Blocking**, key: TOATE eforturile tehnice presupun paying pilot care nu există încă
 - [[2026-05-16 Pre-mortem Trading Bots]] — **16 risks, 4 Launch-Blocking**: IBKR 2FA SPOF, stocks→ibkr coupling, state.json corruption, bandwidth split

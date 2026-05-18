@@ -13,12 +13,12 @@ tags:
   - risk/off
   - venue/binance
 created: 2026
-updated: 2026-05-16
+updated: 2026-05-18
 ---
 
 # crypto-bot
 
-🛑 **DORMANT (2026-05-10)** — toate strategiile killed, serviciul rulează dar zero semnale.
+🛑 **DORMANT strategy-wise (2026-05-10)** — toate strategiile killed, serviciul încă rulează pentru scan/outcome/observability.
 
 ## On-disk
 
@@ -52,8 +52,10 @@ bot_id = **8736** (post swap 2026-05-08). Vezi [[Telegram bots map]].
 
 ## Current state
 
-- Service alive (process running, no crash)
-- Zero semnale (toate timers/strategies disabled)
+- Service alive (process running)
+- 2026-05-18: mirror către Strategy OS Alert Intelligence pentru signal/decision/exit events
+- `decision_log.csv` și `trades.csv` sunt importate în Strategy OS pentru outcome history
+- Telegram issue deschis: token valid pentru `CryptoBotSimBot`, dar `getChat(1194534321)` returnează `chat not found`; probabil trebuie `/start` pe botul crypto specific
 - Cod inert pentru strategies killed — păstrat ca paper trail/arhivă
 
 ## 🔴 Strategy resurrection gate

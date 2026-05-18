@@ -13,7 +13,7 @@ tags:
   - risk/high
   - venue/ibkr
 created: 2026
-updated: 2026-05-16
+updated: 2026-05-18
 ---
 
 # ibkr_bot
@@ -43,6 +43,17 @@ updated: 2026-05-16
 ## Telegram bot
 
 bot_id = **8639** (post swap 2026-05-08). Vezi [[Telegram bots map]].
+
+## Strategy OS alert mirror
+
+2026-05-18: `ibkr_bot` păstrează botul Telegram de execuție, dar trimite mirror către Strategy OS Alert Intelligence pentru:
+- buy signal;
+- Execute/Skip/Expire;
+- gateway down;
+- time/early/breakeven risk blocks;
+- exit events.
+
+Vezi [[2026-05-18 Alert Intelligence deployed]].
 
 ## Deploy workflow
 

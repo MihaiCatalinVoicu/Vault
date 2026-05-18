@@ -1,8 +1,8 @@
 ---
 title: Automation_MVP
 type: project
-status: inactive
-risk: off
+status: active
+risk: medium
 stack:
   - Python
   - FastAPI
@@ -13,12 +13,12 @@ tags:
   - product/tooling
   - product/orchestration
 created: 2026
-updated: 2026-05-16
+updated: 2026-05-18
 ---
 
 # Automation_MVP
 
-🟢 **OFF (INACTIVE)** — per `Trading Bots/CLAUDE.md`: "Telegram poller mort din mar 2026". Minimal local orchestrator pentru Composer + premium planner escalation cu Telegram approvals.
+🟢 **ACTIVE via Strategy OS** — inițial minimal local orchestrator, acum conține panelul comercial Strategy OS + audit/AI/tickets/Alert Intelligence.
 
 ## On-disk
 
@@ -49,9 +49,16 @@ Minimal local orchestrator for:
 
 ## Status
 
-Telegram poller mort din martie 2026. Service inactiv.
+2026-05-18: Strategy OS este activ pe server `207.154.248.232` ca panel/pipeline operațional.
 
-**Întrebare deschisă:** mai folosim conceptul? Dacă da, ar trebui revived sau înlocuit cu altă tehnologie? Dacă nu, marchează clar ca abandoned (similar cu strategiile killed în [[crypto-bot]]).
+Nou:
+- unified `strategy_audit_events`;
+- stocks policy/evidence dashboard;
+- AI Console;
+- Telegram Ops;
+- `Alert Intelligence` ca istoric central pentru alerte + daily reviews + weekly consensus timer.
+
+Vezi [[2026-05-18 Alert Intelligence deployed]].
 
 ## Layout
 
