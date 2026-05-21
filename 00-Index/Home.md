@@ -4,7 +4,7 @@ type: index
 tags:
   - moc
   - home
-updated: 2026-05-18
+updated: 2026-05-19
 ---
 
 # Home — VenueHub Vault
@@ -26,7 +26,7 @@ updated: 2026-05-18
 |---|---|---|
 | [[Reservation-System]] | client_app market readiness in execution | Sprint 5/8A/9/10 pending pe laptop personal |
 | [[stocks-bot]] | PAPER → genereaza semnale EC_V1 pentru ibkr_bot | Active lane: `stocks_event_v2_lane` |
-| [[alpha-lab]] | R&D research lab, 3 fronts active | NU live order routing |
+| [[alpha-lab]] | R&D research lab, 4 fronts active | Options Microstructure Overlay shadow MVP deployed 2026-05-19; NU live order routing |
 | [[research-orchestrator]] | TOOLING — A1 digest deployed 2026-05-08 | Multi-venue digest pentru ibkr_bot context |
 
 ### 🟡 TBD / 🛑 Dormant / ⚪ Inactive
@@ -40,6 +40,7 @@ updated: 2026-05-18
 
 ## Recent decisions (newest first)
 
+- [[2026-05-19 Options Microstructure Overlay shadow MVP]] — alpha-lab options microstructure read-only overlay deployed to server; Strategy OS custom-adapter smoke local passed; no live execution.
 - [[2026-05-18 Alert Intelligence deployed]] — Strategy OS DB devine istoric central pentru alerte; daily learning + weekly consensus timers active.
 - [[2026-05-16 Reservation-System pre-pilot readiness]] — Accounting Ops ✅ GATA, Fast Ops ⚠️ restaurant-only, External Reservations 🔄 foundation+3PR MVP. Decision: pilot restaurant-only + mobile PAUSE + demo video first.
 - [[2026-05-16 Pre-mortem Reservation-System]] — **18+4 risks, 7 Launch-Blocking**, key: TOATE eforturile tehnice presupun paying pilot care nu există încă

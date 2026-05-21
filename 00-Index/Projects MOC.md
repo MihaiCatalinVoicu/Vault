@@ -4,7 +4,7 @@ type: moc
 tags:
   - moc
   - projects
-updated: 2026-05-16
+updated: 2026-05-19
 ---
 
 # Projects MOC
@@ -34,8 +34,9 @@ Map of Content pentru toate proiectele active + arhivate. Status preluat din can
 
 ### [[alpha-lab]] — `C:\Personal\Trading Bots\alpha-lab\`
 - Research laboratory separate de live runtimes
-- 3 fronts: ETF/index, SEC events, Crypto carry/basis (research-only)
+- 4 fronts: ETF/index, SEC events, Crypto carry/basis (research-only), Options Microstructure Overlay shadow MVP
 - Promotion: alpha-lab → stocks-bot paper → micro-live → live
+- Latest: [[2026-05-19 Options Microstructure Overlay shadow MVP]]
 
 ### [[research-orchestrator]] — `C:\Personal\Trading Bots\research-orchestrator\`
 - Idea review + debate + voting + outcome tracking

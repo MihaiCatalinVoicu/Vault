@@ -57,8 +57,9 @@ Nou:
 - AI Console;
 - Telegram Ops;
 - `Alert Intelligence` ca istoric central pentru alerte + daily reviews + weekly consensus timer.
+- 2026-05-19: `Self-Improvement Loop v1` adaugă pattern-uri outcome-aware și shadow tests pentru EC_V1 fără mutații live.
 
-Vezi [[2026-05-18 Alert Intelligence deployed]].
+Vezi [[2026-05-18 Alert Intelligence deployed]] și [[2026-05-19 Alert Intelligence Self-Improvement Loop v1]].
 
 2026-05-18 update:
 - added stocks `Volume Confirmation` shadow layer from volume research PDF;

@@ -4,7 +4,7 @@ type: moc
 tags:
   - moc
   - decisions
-updated: 2026-05-16
+updated: 2026-05-19
 ---
 
 # Decisions MOC
@@ -13,6 +13,11 @@ Cronologic, newest first. Fiecare decizie cu rationale clar. Citește înainte d
 
 ## 2026-05
 
+- [[2026-05-19 Options Microstructure Overlay shadow MVP]] — alpha-lab options overlay implemented/deployed as read-only shadow risk context; real data provider/history/UI/timer still pending
+- [[2026-05-18 Daily Signal Digest truthfulness fix]] — daily digest must not show fake live portfolio/PnL; live snapshot exporter/reader introduced
+- [[2026-05-18 Volume Confirmation shadow layer]] — volume/VWAP features added as shadow fields, not live gates
+- [[2026-05-18 Alert Intelligence deployed]] — Strategy OS central alert history + daily learning + weekly consensus
+- [[2026-05-19 Alert Intelligence Self-Improvement Loop v1]] — outcome-aware patterns, EC_V1 shadow tests, audit-only learning loop
 - [[2026-05-16 Reservation-System pre-pilot readiness]] — gap analysis cele 3 zone (accounting ✅, fast-ops restaurant-only, external foundation+3PR), 4 forced decisions
 - [[2026-05-16 Pre-mortem Reservation-System]] — **18+4 risks**, 7 Launch-Blocking, key insight: toate eforturile tehnice presupun un paying pilot care nu există încă
 - [[2026-05-16 Pre-mortem Trading Bots]] — 16 risks identified, 4 Launch-Blocking, key insight: bandwidth split + tax exposure + single-dev = Elephants-as-Tigers

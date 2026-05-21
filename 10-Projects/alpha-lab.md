@@ -12,7 +12,7 @@ tags:
   - product/research
   - risk/sim
 created: 2026
-updated: 2026-05-16
+updated: 2026-05-19
 ---
 
 # alpha-lab
@@ -43,6 +43,7 @@ updated: 2026-05-16
 1. **ETF / index structural** — long-horizon structural edges în indexes
 2. **SEC event lane** — events-based stocks (probably feed la [[stocks-bot]] cluster lane)
 3. **Crypto carry / basis** — ⚠️ **research-only**, fără implicații pe [[crypto-bot]] dormant; vezi [[2026-05-08 Crypto-carry abandoned]] pentru de ce carry classic e dead structural
+4. **Options Microstructure Overlay** — ✅ shadow MVP deployed 2026-05-19; read-only risk/context overlay, no execution. Vezi [[2026-05-19 Options Microstructure Overlay shadow MVP]].
 
 > [!note]
 > Crypto carry/basis în alpha-lab e research FRONT, NU revivare strategy. Dacă cercetarea dovedește mecanism nou care nu mai e impacted de market structure 2024+, atunci consider strategy resurrection cu gate strict.
@@ -66,6 +67,37 @@ updated: 2026-05-16
 `alpha-lab` strategy → manual review → re-implement în [[stocks-bot]] (paper) → shadow → micro-live → live (consumed by [[ibkr_bot]])
 
 Trecerea NU e automată. E gating manual (CLAUDE.md menționează "Strategy resurrection gate" cu condiții explicite).
+
+## Latest deployed research
+
+### 2026-05-19 — Options Microstructure Overlay v1
+
+Status: **shadow/read-only MVP deployed on server**, not full production analytics.
+
+Implemented:
+
+- options chain snapshot contract + loader;
+- IV surface summary;
+- GEX/Vanna proxy;
+- rule-based overlay classifier;
+- ETF structural overlay backtest;
+- Strategy OS `custom_adapter_ingest_v1` payload builder.
+
+Server deploy:
+
+- target: `/root/alpha-lab`
+- backup: `/root/backups/alpha-lab-options-overlay-20260519T132042Z`
+- verification: `14 passed in 0.54s`
+
+Not implemented yet:
+
+- real options data provider;
+- 60+ trading days real history;
+- trade-flow/multi-leg detection;
+- production timer/ingest;
+- Strategy OS UI dedicated to overlay state.
+
+Canonical note: [[2026-05-19 Options Microstructure Overlay shadow MVP]]
 
 ## Cross-refs
 
