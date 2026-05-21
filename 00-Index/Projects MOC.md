@@ -25,7 +25,8 @@ Map of Content pentru toate proiectele active + arhivate. Status preluat din can
 ### [[Reservation-System]] — `C:\Personal\Reservation-Systems\Reservation-System\`
 - SaaS HoReCa multi-tenant (restaurant + hotel + spa + tourist)
 - Stack: Spring Boot + React + Flutter
-- **Curent:** client_app market readiness — Sprint 5/8A/9/10 pending pe laptop personal
+- **Curent:** VPF stack ready through VPF-07; handoff for laptop move: [[Reservation-System - Handoff 2026-05-21 VPF stack to FIT-00]]
+- **Next:** `FIT-00 - Fitness Pack Shell` after logical merge order `#94 -> #93`
 
 ### [[stocks-bot]] — `C:\Personal\Trading Bots\stocks-bot\`
 - SEC Form 4 pipeline → events → enrich → score → ideas → shadow sim

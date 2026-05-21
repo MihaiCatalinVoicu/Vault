@@ -55,6 +55,17 @@ iOS native track separat la `ios/` (parking lot).
 
 ## Current execution
 
+### VPF stack handoff to FIT-00 (2026-05-21)
+
+Latest laptop-transfer handoff: [[Reservation-System - Handoff 2026-05-21 VPF stack to FIT-00]]
+
+Important:
+
+- VPF-06 is PR `#94` (`feat(superadmin): manage vertical packages`).
+- VPF-07 is PR `#93` (`test(verticals): harden multi-scope visibility`).
+- GitHub numbers are reversed because VPF-07 PR was created before VPF-06 PR; logical merge order is `#94 -> #93`.
+- Next sprint after VPF-07 is `FIT-00 - Fitness Pack Shell`.
+
 ### Current state snapshot (2026-05-18)
 
 Latest canonical vault snapshot: [[Reservation-System - State 2026-05-18]]
