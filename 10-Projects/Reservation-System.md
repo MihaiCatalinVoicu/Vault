@@ -14,7 +14,7 @@ tags:
   - product/saas
   - product/horeca
 created: 2026-04
-updated: 2026-05-18
+updated: 2026-05-21
 ---
 
 # Reservation-System
@@ -66,6 +66,18 @@ Short version:
 - ANAF/e-Factura are lant tehnic controlat pana la readiness/ops: OAuth foundation, XML preview, operator-approved upload abstraction, manual status/evidence abstraction, readiness gates, manual retry si incident/release docs.
 - Real ANAF TEST proof este inca **NO-GO**: lipsesc ANAF app registration/client credentials/SPV authority/private secrets/admin auth.
 - Main repo head la snapshot: `779113f5 fix(billing): wire ANAF e-Factura clients for Spring`.
+
+### NOVENTRA admin / accounting / funding (2026-05-21)
+
+Latest admin note: [[2026-05-21 NOVENTRA accounting and funding admin]]
+
+Operational truth:
+
+- firma este probabil **microintreprindere IMM** pentru fonduri europene;
+- CAEN recomandat pentru finantare VenueHub: `6201`;
+- contractul de contabilitate este acceptabil ca baza, dar cere corectii la date firma, e-Factura/SPV, penalitati, neangajare si raspundere;
+- pentru etapa actuala sunt estimate `0-2` facturi emise/luna;
+- peste `2-3` facturi/luna, fondatorul ar trebui sa emita in platforma de facturare, contabilul sa verifice/descarce/SPV.
 
 ### Client app market readiness (started 2026-05-06)
 
