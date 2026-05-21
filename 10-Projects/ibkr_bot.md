@@ -13,7 +13,7 @@ tags:
   - risk/high
   - venue/ibkr
 created: 2026
-updated: 2026-05-18
+updated: 2026-05-19
 ---
 
 # ibkr_bot
@@ -55,11 +55,24 @@ bot_id = **8639** (post swap 2026-05-08). Vezi [[Telegram bots map]].
 
 Vezi [[2026-05-18 Alert Intelligence deployed]].
 
+## Pre-mortem mitigations (2026-05-17 → 2026-05-18)
+
+3 din 4 Tigers identificate în [[2026-05-16 Pre-mortem Trading Bots]] închise:
+
+- **T3 state.json corruption** — fsync(tmp+dir) + hourly versioned snapshots în `.state.json.backups/` (24-file ring buffer). Vezi [[2026-05-17 Pre-mortem T1 T2 T3 mitigations deployed]].
+- **T2 stocks-bot coupling** — `signal_validator.py` cu sanity gates pe ticker/planned_cost/dates + soft-warn freshness check pe paper_orders.csv stale.
+- **T1 Gateway 2FA SPOF** — `ops/ibkr_gateway_watchdog.py` standalone (systemd timer 5min), NTFY push channel independent de Telegram, SMTP email optional. State machine cu cooldown 60min.
+
+Plus fast-follow T5:
+
+- **T5 ANAF tax extractor** — `tools/anaf_tax_export.py` parser Flex XML + FIFO + BNR converter → RON CSVs pentru Form D200. Vezi [[2026-05-18 ANAF tax extractor shipped]].
+
 ## Deploy workflow
 
 - Release: **SFTP + sudo install** (NU git push to prod server)
 - Service systemd: `ibkr_bot.service` + Gateway runs separately via IBC
-- Watchdog auto-restart Gateway dacă >5min down
+- Watchdog auto-restart Gateway dacă >5min down (bot-internal, Telegram-only)
+- **External watchdog** (T1): `ibkr-watchdog.timer` → fires every 5min, independent de bot, NTFY push
 
 ## 🔴 Diagnostic-first protocol
 
