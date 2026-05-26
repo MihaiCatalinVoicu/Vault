@@ -9,6 +9,7 @@
 | 2026-05-26 | **S22** | Fitness route guards aligned with Restaurant/Hotel/Spa pattern (no more `FITNESS_*` granular module gate). |
 | 2026-05-26 | **S23** | Mainline Continuity OS shipped (ledger + checker + watchdog) — not a drift fix per se, but prevents next "merged ≠ on main" miss. |
 | 2026-05-26 | **S24 (deferred)** | NEW finding: Fitness admin GET endpoints return HTTP 500 with valid JWT (surfaced by S22 making routes accessible). Tracked in `docs/ops/BRANCH_STACK.json`. |
+| 2026-05-26 | **S24 close** | Root cause = JPA-Postgres null-param-type-inference bug. Fix via JPQL `CAST(:param AS <type>)` on 4 Fitness repositories. 5/5 admin GETs now return 200. |
 
 ## Critical — CLOSED
 
@@ -29,15 +30,49 @@
 9. **`HOTEL_ROOM_RESERVATIONS` and `HOTEL_CHECKIN_CHECKOUT` share `/admin/front-desk`** — visibility nav de-duplicates by route → will omit one of the two entries.
 10. **Restaurant menu/policy/cash drawer/printers are not present in visibility registry** even though they exist in router/header.
 
-## NEW open — S22 surface, tracked separately
+## Recently CLOSED — S24
 
-12. **`FITNESS-500-INVESTIGATION` — Fitness admin GET endpoints HTTP 500** with valid JWT.
-    - Affected: `/api/v1/admin/fitness/{dashboard,members,membership-plans,classes,checkins,trainers,billing}`.
-    - Surfaced by: S22 making routes accessible (was previously masked by 403 from `FITNESS_*` route guard).
-    - Likely root cause: schema mismatch on local DB (V9068/V9069/V9070 not Flyway-applied; Hibernate `ddl-auto=update` may not have created all columns) OR VPF visibility check throwing on null aggregate.
-    - Required evidence: live BE stdout capture for requestId trace (current `reservationsystem/logs/error.log` is stale — caches a startup JWT_SECRET failure from earlier in the day, not runtime exceptions).
-    - Tracking: `docs/ops/BRANCH_STACK.json` entry id `FITNESS-500-INVESTIGATION` (status `PLANNED`).
-    - Owner: deferred to follow-up sub-sprint.
+12. ~~**`FITNESS-500-INVESTIGATION` — Fitness admin GET endpoints HTTP 500** with valid JWT.~~
+    - **CLOSED S24 (2026-05-26)**. Root cause: JPA-Postgres null-parameter-type-inference bug.
+      When `:search` (String), `:fromTime`/`:toTime` (LocalDateTime), or other nullable JPA params
+      reach Postgres without explicit type info, Postgres's prepared statement parser cannot
+      determine the type, fails with either `function lower(bytea) does not exist` or
+      `could not determine data type of parameter $N`.
+    - **Fix**: wrap nullable params in JPQL `CAST(:param AS <type>)` where `<type>` is
+      Hibernate-supported (`string`, `LocalDateTime`, `Long`, etc). Postgres receives
+      `CAST(? AS varchar)` / `CAST(? AS timestamp)` SQL and types the parameter explicitly.
+    - **Files modified** (4):
+      - `reservationsystem/.../repository/FitnessMemberRepository.java` (`:search`)
+      - `reservationsystem/.../repository/FitnessMembershipPlanRepository.java` (`:search`)
+      - `reservationsystem/.../repository/FitnessClassSessionRepository.java` (`:search`, `:fromTime`, `:toTime`)
+      - `reservationsystem/.../repository/FitnessCheckinRepository.java` (`:search`, `:fromTime`, `:toTime`)
+    - **Verification**: live curl on local BE with manager JWT — all 5 endpoints return 200:
+      - GET `/api/v1/admin/fitness/dashboard` → 200
+      - GET `/api/v1/admin/fitness/members` → 200
+      - GET `/api/v1/admin/fitness/membership-plans` → 200
+      - GET `/api/v1/admin/fitness/classes` → 200
+      - GET `/api/v1/admin/fitness/checkins` → 200
+    - **Side effects** discovered during investigation:
+      - V9068+V9069+V9070+V9071+V9072 migrations were not applied on local DB
+        (local profile has `spring.flyway.enabled=false`, relies on Hibernate
+        `ddl-auto=update`, which does NOT add NOT NULL columns to existing tables
+        nor run UPDATE statements). Applied manually via direct SQL during S24.
+      - This is a separate operational pattern issue tracked as drift candidate
+        below (#13).
+
+## NEW open — discovered during S24
+
+13. **Local profile Flyway disabled — migrations don't replay automatically.**
+    - Affected: any developer running BE locally without `spring.profiles.active=local,flyway`.
+    - Impact: schema drift between dev's local DB and prod DB. Manifests as
+      mystery 500 errors on routes that exercise queries touching columns
+      added in unrun migrations.
+    - Mitigation options: (a) document in CLAUDE.md "always include `flyway`
+      profile on local"; (b) make `application.yml` default `spring.flyway.enabled=true`
+      and have specific tests turn it off; (c) add a `scripts/apply-pending-migrations-local.ps1`
+      helper that operators run after `git pull`.
+    - Owner: TBD. Lower priority than S24 (operator can manually apply migrations
+      when needed; less common than the bug we just closed).
 
 ## Registry gaps to add or consciously classify as shared/config
 
@@ -103,3 +138,11 @@
 
 - The pattern "create granular route guards that require BE-published modules + `allowVpfFallback={false}`" creates a route that **looks open in nav but slams 403** when the BE visibility context doesn't publish those granular codes. Fitness was the case study; same pattern would break Restaurant/Hotel/Spa if anyone copied it. S22 reverted to shared `ProtectedRoute module=<vertical>` + role check.
 - The pattern "rely on Flyway for schema in production, Hibernate `ddl-auto=update` in local dev" leaves local environments behind on data migrations (UPDATE statements). V9070 has a real-effect UPDATE that NEVER runs locally → tenants lack the `FITNESS` enabled_modules entry → operator hits 500/403 even on supposedly-configured tenants. S22's DB smoke step manually applies the UPDATE-equivalent locally as a workaround.
+- **S24 lesson**: JPA `@Query` with `:nullableParam IS NULL OR ...` pattern on
+  Postgres ALWAYS needs `CAST(:param AS <hibernate-type>)` to give Postgres
+  an explicit parameter type. Otherwise Postgres tries to infer from context
+  and may pick `bytea` for `LOWER(:search)` chains or refuse altogether with
+  "could not determine data type of parameter $N". This applies to String,
+  LocalDateTime, and any other type that's nullable in a `IS NULL` predicate.
+  Enums and Longs sometimes self-type from comparison columns, but it's
+  safer to CAST them all.
